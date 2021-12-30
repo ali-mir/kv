@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package kv;
+option go_package = "/proto";
+
+service KV {
+  rpc Insert (InsertRequest) returns (InsertReply) {}
+  rpc Lookup (LookupRequest) returns (LookupReply) {}
+  rpc Delete (DeleteRequest) returns (DeleteReply) {}
+}
+
+message InsertRequest {
+  string key = 1;
+  string value = 2;
+}
+
+message InsertReply {
+  bool success = 1;
+}
+
+message LookupRequest {
+  string key = 1;
+}
+
+message LookupReply {
+  string value = 1;
+}
+
+message DeleteRequest {
+  string key = 1;
+}
+
+message DeleteReply {
+  bool success = 1;
+}
