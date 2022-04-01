@@ -12,9 +12,9 @@ go run cli/cli.go -port 12345
 ```
 The CLI consumes the client library, and currently supports the following commands:
 ```
-insert - Insert key and value into kv
-lookup - Lookup key in kv
-delete - Delete key in kv
+insert <key> <value> - Insert key and value into kv
+lookup <key>         - Lookup key in kv
+delete <key>         - Delete key in kv
 help   - Show available commands
 clear  - Clear the terminal screen
 exit   - Close your kv client
