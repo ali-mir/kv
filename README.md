@@ -15,7 +15,7 @@ The CLI consumes the client library, and currently supports the following comman
 insert <key> <value> - Insert key and value into kv
 lookup <key>         - Lookup key in kv
 delete <key>         - Delete key in kv
-help   - Show available commands
-clear  - Clear the terminal screen
-exit   - Close your kv client
+help                 - Show available commands
+clear                - Clear the terminal screen
+exit                 - Close your kv client
 ```
