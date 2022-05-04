@@ -1,6 +1,5 @@
 ## KV
-KV is a toy in-memory key value store built primarily in an effort to write more go and check out `grpc`.
-This is still a work in progress.
+KV is a toy in-memory key value store.
 
 ```
 // download dependencies

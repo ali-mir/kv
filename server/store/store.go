@@ -5,30 +5,36 @@ import (
 	"sync"
 )
 
-var m map[string]string
-var mutex sync.Mutex
-
-func Initialize() {
-	m = make(map[string]string)
+type Store struct {
+	m map[string]string
+	mutex sync.RWMutex
 }
 
-func Insert(key, value string) bool {
-	mutex.Lock()
-	defer mutex.Unlock()
+func NewStore() *Store {
+	s := Store{}
+	s.m = make(map[string]string)
+	return &s
+}
+
+func (s *Store) Insert(key, value string) bool {
+	s.mutex.Lock()
+	defer s.mutex.Unlock()
 	log.Printf("Inserting key {%s} with value {%s}", key, value)
-	m[key] = value
+	s.m[key] = value
 	return true
 }
 
-func Lookup(key string) string {
+func (s *Store) Lookup(key string) string {
+	s.mutex.RLock()
+	defer s.mutex.RUnlock()
 	log.Printf("Looking up key {%s}", key)
-	return m[key]
+	return s.m[key]
 }
 
-func Delete(key string) bool {
-	mutex.Lock()
-	defer mutex.Unlock()
+func (s *Store) Delete(key string) bool {
+	s.mutex.Lock()
+	defer s.mutex.Unlock()
 	log.Printf("Deleting key {%s}", key)
-	delete(m, key)
+	delete(s.m, key)
 	return true
 }
