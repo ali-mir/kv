@@ -5,6 +5,7 @@ import (
 	"sync"
 )
 
+// thread-safe reads and writes
 type Store struct {
 	m map[string]string
 	mutex sync.RWMutex
