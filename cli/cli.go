@@ -23,6 +23,7 @@ const (
 	Exit          = "exit"
 )
 
+var host *string = flag.String("host", "localhost", "port")
 var port *int = flag.Int("port", 20020, "port")
 
 // interactive repl functions
@@ -131,6 +132,6 @@ func main() {
 	setupGracefulExits()
 	flag.Parse()
 	log.SetOutput(os.Stdout)
-	c.Connect(port)
+	c.Connect(host, port)
 	repl()
 }

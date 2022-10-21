@@ -12,10 +12,10 @@ import (
 var conn *grpc.ClientConn
 var client pb.KVClient
 
-func Connect(port *int) *grpc.ClientConn {
+func Connect(host *string, port *int) *grpc.ClientConn {
 	log.Printf("connecting to server at port %d", *port)
 
-	conn, err := grpc.Dial(fmt.Sprintf("localhost:%d", *port), grpc.WithInsecure())
+	conn, err := grpc.Dial(fmt.Sprintf("%s:%d", *host, *port), grpc.WithInsecure())
 	if err != nil {
 		log.Printf("failed to connect to server")
 	}
