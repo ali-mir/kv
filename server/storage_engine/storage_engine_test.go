@@ -1,6 +1,9 @@
 package storage_engine
 
-import "testing"
+import (
+	"testing"
+	"github.com/stretchr/testify/assert"
+)
 
 
 func TestInsertAndLookup(t *testing.T) {
@@ -10,6 +13,8 @@ func TestInsertAndLookup(t *testing.T) {
 	if value != "world" {
 		panic("Expected {\"hello\": \"world\"}")
 	}
+	assert.Equal(t, "world", value, "Expected {\"hello\": \"world\"}")
+
 }
 
 func TestDelete(t *testing.T) {
@@ -17,7 +22,6 @@ func TestDelete(t *testing.T) {
 	s.Insert("hello", "world")
 	s.Delete("hello")
 	value := s.Lookup("hello")
-	if value != "" {
-		panic("Expected nil for key \"hello\"")
-	}
+	assert.Equal(t, "", value, "Expected nil for key \"hello\"")
+
 }
