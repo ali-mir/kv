@@ -23,5 +23,4 @@ func TestDelete(t *testing.T) {
 	s.Delete("hello")
 	value := s.Lookup("hello")
 	assert.Equal(t, "", value, "Expected nil for key \"hello\"")
-
 }
